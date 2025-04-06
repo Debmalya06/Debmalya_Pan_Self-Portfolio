@@ -1,0 +1,47 @@
+.checkbox-container {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .checkbox-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .checkbox-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #cbd5e1;
+    border-radius: 4px;
+    background-color: white;
+    transition: all 0.2s ease;
+  }
+  
+  .checkbox-input:checked + .checkbox-box {
+    background-color: #7c3aed;
+    border-color: #7c3aed;
+  }
+  
+  .checkbox-input:focus + .checkbox-box {
+    box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.3);
+  }
+  
+  .checkbox-input:disabled + .checkbox-box {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .checkbox-check {
+    width: 14px;
+    height: 14px;
+    color: white;
+  }
+  
+  
