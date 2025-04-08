@@ -23,7 +23,8 @@ import { Popover, PopoverTrigger, PopoverContent } from "../../../components/ui/
 
 import RadioGroup from "../../../components/ui/RadioGroup";
 import Separator from "../../../components/ui/Separator";
-
+import { toast, ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css'
 function CandidateProfile() {
   const [isEditing, setIsEditing] = useState(false)
 
@@ -84,11 +85,54 @@ function CandidateProfile() {
               </div>
             </div>
           </CardContent>
-          <CardFooter>
-            <Button variant="outline" className="w-full">
-              Download Resume
-            </Button>
-          </CardFooter>
+
+          <CardFooter className="flex flex-col gap-3">
+  <Button variant="outline" className="w-full">
+    Download Resume
+  </Button>
+
+  <div className="w-full">
+    <Label htmlFor="cv-upload" className="block mb-1 text-sm font-medium">
+      Upload New Resume (PDF only)
+    </Label>
+    <Input
+      id="cv-upload"
+      type="file"
+      accept=".pdf"
+      className="w-full"
+   // Inside your onChange handler
+onChange={async (e) => {
+  const file = e.target.files?.[0]
+  if (!file) return
+
+  const formData = new FormData()
+  formData.append("cv", file)
+
+  try {
+    const res = await fetch("http://localhost:5001/api/cv/upload-cv", {
+      method: "POST",
+      body: formData,
+    })
+
+    if (!res.ok) {
+      const errorData = await res.json()
+      throw new Error(errorData.message || "Failed to upload CV")
+    }
+
+    const data = await res.json()
+    console.log("Upload successful:", data)
+    toast.success("✅ CV uploaded successfully!")
+  } catch (error) {
+    console.error("Upload error:", error)
+    toast.error(`❌ CV upload failed: ${error.message}`)
+  }
+}}
+    />
+  </div>
+</CardFooter>
+
+
+          
         </Card>
 
         <div className="md:col-span-2">
@@ -372,6 +416,8 @@ function CandidateProfile() {
           </Tabs>
         </div>
       </div>
+      <ToastContainer /> {/* ← Add this */}
+
     </div>
   )
 }

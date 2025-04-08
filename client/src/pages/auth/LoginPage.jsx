@@ -1,28 +1,17 @@
-"use client"
-
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { Briefcase, Building2, Lock, Mail, User } from "lucide-react"
-
+import { toast, ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css'
 import Button from "../../components/ui/Button"
-import Checkbox from "../../components/ui/Checkbox"
-import Progress from "../../components/ui/Progress"
-import RadioGroup from "../../components/ui/RadioGroup"
-
+import Input from "../../components/ui/Input"
+import Label from "../../components/ui/Label"
 import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem
-} from "../../components/ui/Select" // ✅ FIXED named imports
-
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent
-} from "../../components/ui/Popover"
-
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger
+} from "../../components/ui/Tabs"
 import {
   Card,
   CardContent,
@@ -32,31 +21,57 @@ import {
   CardTitle
 } from "../../components/ui/Card"
 
-import Input from "../../components/ui/Input"
-import Label from "../../components/ui/Label"
-
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger
-} from "../../components/ui/Tabs"
-
 function LoginPage() {
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(false)
 
-  const handleLogin = (userType) => {
-    setIsLoading(true)
-    setTimeout(() => {
-      setIsLoading(false)
-      if (userType === "candidate") {
-        navigate("/dashboard/candidate")
-      } else {
-        navigate("/dashboard/company")
+  // ✅ Candidate states
+  const [candidateEmail, setCandidateEmail] = useState("")
+  const [candidatePassword, setCandidatePassword] = useState("")
+
+  // ✅ Company states
+  const [companyEmail, setCompanyEmail] = useState("")
+  const [companyPassword, setCompanyPassword] = useState("")
+
+  const handleLogin = async (userType) => {
+    setIsLoading(true);
+
+    const email = userType === "candidate" ? candidateEmail : companyEmail;
+    const password = userType === "candidate" ? candidatePassword : companyPassword;
+
+    try {
+      const res = await fetch("http://localhost:5001/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email, password, userType })
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || "Login failed");
       }
-    }, 1500)
-  }
+
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("userType", userType);
+
+      toast.success("Login successful!");
+
+      setTimeout(() => {
+        if (userType === "candidate") {
+          navigate("/dashboard/candidate");
+        } else {
+          navigate("/dashboard/company");
+        }
+      }, 1500);
+    } catch (err) {
+      toast.error(err.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-12">
@@ -80,7 +95,7 @@ function LoginPage() {
             </TabsTrigger>
           </TabsList>
 
-          {/* Candidate Login */}
+          {/* ✅ Candidate Login */}
           <TabsContent value="candidate">
             <Card>
               <CardHeader>
@@ -92,7 +107,14 @@ function LoginPage() {
                   <Label htmlFor="candidate-email">Email</Label>
                   <div className="relative">
                     <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                    <Input id="candidate-email" type="email" placeholder="you@example.com" className="pl-10" />
+                    <Input
+                      id="candidate-email"
+                      type="email"
+                      value={candidateEmail}
+                      onChange={(e) => setCandidateEmail(e.target.value)}
+                      placeholder="you@example.com"
+                      className="pl-10"
+                    />
                   </div>
                 </div>
                 <div className="space-y-2">
@@ -104,7 +126,13 @@ function LoginPage() {
                   </div>
                   <div className="relative">
                     <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                    <Input id="candidate-password" type="password" className="pl-10" />
+                    <Input
+                      id="candidate-password"
+                      type="password"
+                      value={candidatePassword}
+                      onChange={(e) => setCandidatePassword(e.target.value)}
+                      className="pl-10"
+                    />
                   </div>
                 </div>
               </CardContent>
@@ -117,7 +145,7 @@ function LoginPage() {
                   {isLoading ? "Logging in..." : "Login"}
                 </Button>
                 <div className="text-center text-sm">
-                  Don't have an account?{" "}
+                  Don&apos;t have an account?{" "}
                   <Link to="/auth/register?type=candidate" className="text-purple-600 hover:underline">
                     Register
                   </Link>
@@ -126,7 +154,7 @@ function LoginPage() {
             </Card>
           </TabsContent>
 
-          {/* Company Login */}
+          {/* ✅ Company Login */}
           <TabsContent value="company">
             <Card>
               <CardHeader>
@@ -138,7 +166,14 @@ function LoginPage() {
                   <Label htmlFor="company-email">Email</Label>
                   <div className="relative">
                     <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                    <Input id="company-email" type="email" placeholder="company@example.com" className="pl-10" />
+                    <Input
+                      id="company-email"
+                      type="email"
+                      value={companyEmail}
+                      onChange={(e) => setCompanyEmail(e.target.value)}
+                      placeholder="company@example.com"
+                      className="pl-10"
+                    />
                   </div>
                 </div>
                 <div className="space-y-2">
@@ -150,7 +185,13 @@ function LoginPage() {
                   </div>
                   <div className="relative">
                     <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                    <Input id="company-password" type="password" className="pl-10" />
+                    <Input
+                      id="company-password"
+                      type="password"
+                      value={companyPassword}
+                      onChange={(e) => setCompanyPassword(e.target.value)}
+                      className="pl-10"
+                    />
                   </div>
                 </div>
               </CardContent>
@@ -163,7 +204,7 @@ function LoginPage() {
                   {isLoading ? "Logging in..." : "Login"}
                 </Button>
                 <div className="text-center text-sm">
-                  Don't have an account?{" "}
+                  Don&apos;t have an account?{" "}
                   <Link to="/auth/register?type=company" className="text-purple-600 hover:underline">
                     Register
                   </Link>
@@ -173,6 +214,7 @@ function LoginPage() {
           </TabsContent>
         </Tabs>
       </div>
+      <ToastContainer /> {/* ← Add this */}
     </div>
   )
 }

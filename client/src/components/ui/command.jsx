@@ -64,9 +64,20 @@ export const CommandGroup = ({ children, heading, className = "", ...props }) =>
 
 export const CommandItem = ({ children, onSelect, className = "", ...props }) => {
   return (
-    <div className={`command-item ${className}`} onClick={onSelect} role="button" tabIndex={0} {...props}>
+    <div
+      className={`command-item ${className}`}
+      onClick={(e) => {
+        if (typeof onSelect === "function") {
+          onSelect(e);
+        } else {
+          console.warn("onSelect is not a function", onSelect);
+        }
+      }}
+      role="button"
+      tabIndex={0}
+      {...props}
+    >
       {children}
     </div>
   )
 }
-

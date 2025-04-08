@@ -70,7 +70,7 @@ function CandidateDashboard() {
       <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
         <h1 className="text-2xl font-bold">Welcome, John!</h1>
         <div className="flex gap-2">
-          <Link to="/dashboard/candidate/jobs">
+          <Link to="/dashboard/candidate/Jobs">
             <Button className="bg-purple-600 hover:bg-purple-700">
               <Search className="mr-2 h-4 w-4" />
               Find Jobs
@@ -229,6 +229,7 @@ function CandidateDashboard() {
     </div>
   )
 }
+
 
 export default CandidateDashboard
 

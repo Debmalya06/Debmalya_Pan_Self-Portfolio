@@ -6,6 +6,7 @@ const CandidateSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   phone: { type: String, required: true },
   password: { type: String, required: true },
+  resumeUrl: { type: String }, // <-- New field
 });
 
 module.exports = mongoose.model("Candidate", CandidateSchema);

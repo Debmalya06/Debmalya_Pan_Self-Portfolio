@@ -3,20 +3,11 @@
 import { useState } from "react"
 import { Link, useNavigate, useLocation } from "react-router-dom"
 import { Briefcase, Building2, Lock, Mail, Phone, User } from "lucide-react"
-
-// UI components (default exports)
+import { toast, ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css'
 import Button from "../../components/ui/Button"
-import Checkbox from "../../components/ui/Checkbox"
 import Input from "../../components/ui/Input"
 import Label from "../../components/ui/Label"
-import Progress from "../../components/ui/Progress"
-import Textarea from "../../components/ui/Textarea"
-import { Select } from "../../components/ui/Select"
-import { Popover, PopoverTrigger, PopoverContent } from "../../components/ui/Popover"
-import RadioGroup from "../../components/ui/RadioGroup"
-import Separator from "../../components/ui/Separator"
-
-// UI components (named exports)
 import {
   Card,
   CardContent,
@@ -25,7 +16,6 @@ import {
   CardHeader,
   CardTitle
 } from "../../components/ui/Card"
-
 import {
   Tabs,
   TabsContent,
@@ -40,17 +30,82 @@ function RegisterPage() {
   const defaultTab = searchParams.get("type") || "candidate"
   const [isLoading, setIsLoading] = useState(false)
 
-  const handleRegister = (userType) => {
+  // ✅ Candidate states
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [candidateEmail, setCandidateEmail] = useState("")
+  const [candidatePhone, setCandidatePhone] = useState("")
+  const [candidatePassword, setCandidatePassword] = useState("")
+  const [candidateConfirmPassword, setCandidateConfirmPassword] = useState("")
+
+  // ✅ Company states
+  const [companyName, setCompanyName] = useState("")
+  const [companyEmail, setCompanyEmail] = useState("")
+  const [companyPhone, setCompanyPhone] = useState("")
+  const [companyWebsite, setCompanyWebsite] = useState("")
+  const [companyPassword, setCompanyPassword] = useState("")
+  const [companyConfirmPassword, setCompanyConfirmPassword] = useState("")
+
+  const handleRegister = async (userType) => {
     setIsLoading(true)
 
-    setTimeout(() => {
-      setIsLoading(false)
-      if (userType === "candidate") {
-        navigate("/dashboard/candidate")
+    try {
+      let endpoint = ""
+      let payload = {}
+
+      if (userType === "company") {
+        if (companyPassword !== companyConfirmPassword) {
+          toast.error("Passwords do not match!")
+          setIsLoading(false)
+          return
+        }
+
+        endpoint = "http://localhost:5001/api/auth/register/company"
+        payload = {
+          companyName,
+          businessEmail: companyEmail,
+          businessPhone: companyPhone,
+          companyWebsite,
+          password: companyPassword
+        }
       } else {
-        navigate("/dashboard/company")
+        if (candidatePassword !== candidateConfirmPassword) {
+          toast.error("Passwords do not match!")
+          setIsLoading(false)
+          return
+        }
+
+        endpoint = "http://localhost:5001/api/auth/register/candidate"
+        payload = {
+          firstName,
+          lastName,
+          email: candidateEmail,
+          phone: candidatePhone,
+          password: candidatePassword
+        }
       }
-    }, 1500)
+
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        throw new Error(data.message || "Registration failed")
+      }
+
+      toast.success(`${userType === "company" ? "Company" : "Candidate"} registered successfully!`)
+      navigate("/auth/login")
+    } catch (err) {
+      toast.error(err.message)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -75,7 +130,7 @@ function RegisterPage() {
             </TabsTrigger>
           </TabsList>
 
-          {/* Candidate Form */}
+          {/* ✅ Candidate Form */}
           <TabsContent value="candidate">
             <Card>
               <CardHeader>
@@ -85,65 +140,43 @@ function RegisterPage() {
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="first-name">First Name</Label>
-                    <div className="relative">
-                      <User className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                      <Input id="first-name" placeholder="John" className="pl-10" />
-                    </div>
+                    <Label>First Name</Label>
+                    <Input value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder="John" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="last-name">Last Name</Label>
-                    <Input id="last-name" placeholder="Doe" />
+                    <Label>Last Name</Label>
+                    <Input value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder="Doe" />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="candidate-email">Email</Label>
-                  <div className="relative">
-                    <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                    <Input id="candidate-email" type="email" placeholder="you@example.com" className="pl-10" />
-                  </div>
+                  <Label>Email</Label>
+                  <Input type="email" value={candidateEmail} onChange={(e) => setCandidateEmail(e.target.value)} />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="candidate-phone">Phone Number</Label>
-                  <div className="relative">
-                    <Phone className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                    <Input id="candidate-phone" type="tel" placeholder="+1 (555) 000-0000" className="pl-10" />
-                  </div>
+                  <Label>Phone</Label>
+                  <Input value={candidatePhone} onChange={(e) => setCandidatePhone(e.target.value)} />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="candidate-password">Password</Label>
-                  <div className="relative">
-                    <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                    <Input id="candidate-password" type="password" className="pl-10" />
-                  </div>
+                  <Label>Password</Label>
+                  <Input type="password" value={candidatePassword} onChange={(e) => setCandidatePassword(e.target.value)} />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="candidate-confirm-password">Confirm Password</Label>
-                  <div className="relative">
-                    <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                    <Input id="candidate-confirm-password" type="password" className="pl-10" />
-                  </div>
+                  <Label>Confirm Password</Label>
+                  <Input type="password" value={candidateConfirmPassword} onChange={(e) => setCandidateConfirmPassword(e.target.value)} />
                 </div>
               </CardContent>
               <CardFooter className="flex flex-col space-y-4">
-                <Button
-                  className="w-full bg-purple-600 hover:bg-purple-700"
-                  onClick={() => handleRegister("candidate")}
-                  disabled={isLoading}
-                >
+                <Button className="w-full bg-purple-600 hover:bg-purple-700" onClick={() => handleRegister("candidate")} disabled={isLoading}>
                   {isLoading ? "Creating Account..." : "Create Account"}
                 </Button>
                 <div className="text-center text-sm">
-                  Already have an account?{" "}
-                  <Link to="/auth/login" className="text-purple-600 hover:underline">
-                    Login
-                  </Link>
+                  Already have an account? <Link to="/auth/login" className="text-purple-600 hover:underline">Login</Link>
                 </div>
               </CardFooter>
             </Card>
           </TabsContent>
 
-          {/* Company Form */}
+          {/* ✅ Company Form */}
           <TabsContent value="company">
             <Card>
               <CardHeader>
@@ -152,64 +185,43 @@ function RegisterPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="company-name">Company Name</Label>
-                  <div className="relative">
-                    <Building2 className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                    <Input id="company-name" placeholder="Acme Inc." className="pl-10" />
-                  </div>
+                  <Label>Company Name</Label>
+                  <Input value={companyName} onChange={(e) => setCompanyName(e.target.value)} />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="company-email">Business Email</Label>
-                  <div className="relative">
-                    <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                    <Input id="company-email" type="email" placeholder="company@example.com" className="pl-10" />
-                  </div>
+                  <Label>Business Email</Label>
+                  <Input type="email" value={companyEmail} onChange={(e) => setCompanyEmail(e.target.value)} />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="company-phone">Business Phone</Label>
-                  <div className="relative">
-                    <Phone className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                    <Input id="company-phone" type="tel" placeholder="+1 (555) 000-0000" className="pl-10" />
-                  </div>
+                  <Label>Business Phone</Label>
+                  <Input value={companyPhone} onChange={(e) => setCompanyPhone(e.target.value)} />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="company-website">Company Website</Label>
-                  <Input id="company-website" type="url" placeholder="https://example.com" />
+                  <Label>Company Website</Label>
+                  <Input type="url" value={companyWebsite} onChange={(e) => setCompanyWebsite(e.target.value)} />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="company-password">Password</Label>
-                  <div className="relative">
-                    <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                    <Input id="company-password" type="password" className="pl-10" />
-                  </div>
+                  <Label>Password</Label>
+                  <Input type="password" value={companyPassword} onChange={(e) => setCompanyPassword(e.target.value)} />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="company-confirm-password">Confirm Password</Label>
-                  <div className="relative">
-                    <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                    <Input id="company-confirm-password" type="password" className="pl-10" />
-                  </div>
+                  <Label>Confirm Password</Label>
+                  <Input type="password" value={companyConfirmPassword} onChange={(e) => setCompanyConfirmPassword(e.target.value)} />
                 </div>
               </CardContent>
               <CardFooter className="flex flex-col space-y-4">
-                <Button
-                  className="w-full bg-purple-600 hover:bg-purple-700"
-                  onClick={() => handleRegister("company")}
-                  disabled={isLoading}
-                >
+                <Button className="w-full bg-purple-600 hover:bg-purple-700" onClick={() => handleRegister("company")} disabled={isLoading}>
                   {isLoading ? "Creating Account..." : "Create Account"}
                 </Button>
                 <div className="text-center text-sm">
-                  Already have an account?{" "}
-                  <Link to="/auth/login" className="text-purple-600 hover:underline">
-                    Login
-                  </Link>
+                  Already have an account? <Link to="/auth/login" className="text-purple-600 hover:underline">Login</Link>
                 </div>
               </CardFooter>
             </Card>
           </TabsContent>
         </Tabs>
       </div>
+      <ToastContainer /> {/* ← Add this */}
     </div>
   )
 }
