@@ -10,7 +10,8 @@ import {
   FaJs,
   FaDatabase,
 } from "react-icons/fa";
-import { SiSpring, SiMysql, SiBootstrap } from "react-icons/si";
+import { SiSpring, SiMysql, SiBootstrap, SiTailwindcss, SiArduino, SiCplusplus,SiPython,SiSpringboot } from "react-icons/si";
+import { FcWiFiLogo } from "react-icons/fc";
 
 const Projects = () => {
   const [activeTab, setActiveTab] = useState("all");
@@ -21,7 +22,7 @@ const Projects = () => {
       title: "Dev-Hotel-Management",
       description:
         "A comprehensive hotel management system with user and employee authentication, secure registration, and database management using Spring Framework.",
-      image: "/placeholder.svg?height=300&width=500",
+      image: "/img/Hotel.png?height=300&width=500",
       category: "web",
       github: "https://github.com/debmalya06/Dev-Hotel-Management",
       demo: "#",
@@ -44,9 +45,9 @@ const Projects = () => {
       title: "Hospital Management System",
       description:
         "A comprehensive hospital management system with role-based access control for doctors, administrators, and patients using Java, JSP, and MySQL.",
-      image: "/placeholder.svg?height=300&width=500",
+      image: "/img/hospital.png?height=300&width=500",
       category: "web",
-      github: "https://github.com/debmalya06/hospital-management",
+      github: "https://github.com/debmalya06/DevLifeCare-Hospital ",
       demo: "#",
       technologies: [
         { name: "Java", icon: <FaJava className="text-blue-500" /> },
@@ -68,12 +69,12 @@ const Projects = () => {
       title: "Educare",
       description:
         "An educational learning platform providing access to courses, internships, and training opportunities for students using Spring Boot.",
-      image: "/placeholder.svg?height=300&width=500",
+      image: "/img/Educare.png?height=300&width=500",
       category: "web",
       github: "https://github.com/debmalya06/educare",
       demo: "#",
       technologies: [
-        { name: "Spring Boot", icon: <SiSpring className="text-green-600" /> },
+        { name: "Spring Boot", icon: <SiSpringboot  className="text-green-600" /> },
         { name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
         { name: "CSS", icon: <FaCss3Alt className="text-blue-500" /> },
         { name: "Database", icon: <FaDatabase className="text-yellow-500" /> },
@@ -88,30 +89,54 @@ const Projects = () => {
 
     {
         id: 4,
-        title: "Educare",
+        title: "Devm Todo",
         description:
-          "An educational learning platform providing access to courses, internships, and training opportunities for students using Spring Boot.",
-        image: "/placeholder.svg?height=300&width=500",
+          "Devm Todo is a task management system built with Spring Boot & Thymeleaf that integrates Google's Gemini API to enhance task input with natural language processing (NLP). Users can add tasks in casual language, and the AI will correct and structure the input before saving it to the database..",
+        image: "/img/todo.png?height=300&width=500",
         category: "web",
-        github: "https://github.com/debmalya06/educare",
+        github: "https://github.com/debmalya06/Devm-ToDo",
         demo: "#",
         technologies: [
-          { name: "Spring Boot", icon: <SiSpring className="text-green-600" /> },
+          { name: "Spring Boot", icon: <SiSpringboot  className="text-green-600" /> },
           { name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
-          { name: "CSS", icon: <FaCss3Alt className="text-blue-500" /> },
-          { name: "Database", icon: <FaDatabase className="text-yellow-500" /> },
+          { name: "Tailwind CSS", icon: <SiTailwindcss className="text-cyan-400" /> }, 
+          { name: "MySQL", icon: <SiMysql className="text-blue-600" /> },
         ],
         features: [
-          "Course application system with automated confirmation emails",
-          "Admin notification system for new applications",
-          "Access to courses, internships, and training opportunities",
-          "Ongoing development with planned features like online book storage",
+          "Task Management: Add, edit, delete, and mark tasks as completed.",
+          " Email Notifications: Get notified about pending tasks.",
+          "User Authentication: Secure login/logout functionality."
         ],
       },
+      {
+        id: 5,
+        title: "AI-based LPG Gas Leakage Detection and Fire Alert System",
+        description:
+          "The AI-based LPG Gas Leakage Detection and Fire Alert System is an innovative solution designed to enhance home safety by detecting LPG gas leaks and potential fire hazards. ",
+        image: "/img/lpg.png?height=300&width=500",
+        category: "iot",
+        github: "https://github.com/debmalya06/AI-based-LPG-Gas-Leakage-Detection-Fire-Alert-System",
+        demo: "https://youtu.be/ItU26umeodg?si=MYF8LyiZNyETIyuU",
+        technologies: [
+          { name: "Arduino IDE", icon: <SiArduino className="text-blue-500" /> },
+          { name: "DHT11 Sensor", icon: <FaDatabase className="text-yellow-500" /> },
+          { name: "C++", icon: <SiCplusplus  className="text-blue-500" /> },
+          { name: "Python", icon: <SiPython  className="text-blue-500" /> },
+          { name: "Wifi Module", icon: <FcWiFiLogo   className="text-blue-500" /> },
 
+        ],
+        features: [
+          "LPG Gas Detection: Advanced sensors detect LPG gas leaks, triggering an immediate alert.",
+"Fire Detection: The system includes a fire detection mechanism.",
+"Real-time Notifications: Automated WhatsApp notifications.",
+"Comprehensive Safety: Ensures comprehensive home safety.",
+        ],
+      },
   ];
 
   const filteredProjects = activeTab === "all" ? projects : projects.filter((project) => project.category === activeTab);
+
+
 
   return (
     <section id="projects" className="py-20 bg-gray-900">

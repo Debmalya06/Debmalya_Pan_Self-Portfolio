@@ -19,26 +19,33 @@ const Contact = () => {
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setSubmitStatus("success")
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
+    try {
+      const response = await fetch("http://localhost:5000/api/email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       })
 
-      // Reset status after 5 seconds
-      setTimeout(() => {
-        setSubmitStatus(null)
-      }, 5000)
-    }, 1500)
+      const data = await response.json()
+      if (response.ok) {
+        setSubmitStatus("success")
+        setFormData({ name: "", email: "", subject: "", message: "" })
+      } else {
+        setSubmitStatus("error")
+      }
+    } catch (error) {
+      console.error("Email send error:", error)
+      setSubmitStatus("error")
+    }
+
+    setIsSubmitting(false)
+    setTimeout(() => setSubmitStatus(null), 5000)
   }
 
   return (
@@ -50,19 +57,18 @@ const Contact = () => {
           </h2>
           <div className="w-20 h-1 bg-blue-500 mx-auto rounded-full"></div>
           <p className="text-gray-300 mt-6 max-w-2xl mx-auto">
-            Feel free to reach out to me for any questions, opportunities, or just to say hello! I'm always open to
-            discussing new projects, creative ideas, or opportunities to be part of your vision.
+            Feel free to reach out to me for any questions, opportunities, or just to say hello!
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          {/* Left Contact Info */}
           <div>
             <h3 className="text-2xl font-bold mb-6 text-blue-400">Contact Information</h3>
             <p className="text-gray-300 mb-8">
               I'm interested in freelance opportunities, especially ambitious or large projects. However, if you have
               other requests or questions, don't hesitate to contact me.
             </p>
-
             <div className="space-y-6">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-blue-900/30 flex items-center justify-center text-blue-400">
@@ -117,14 +123,13 @@ const Contact = () => {
             </div>
           </div>
 
+          {/* Right Form */}
           <div>
             <h3 className="text-2xl font-bold mb-6 text-blue-400">Send Me a Message</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-gray-300 mb-2">
-                    Your Name
-                  </label>
+                  <label htmlFor="name" className="block text-gray-300 mb-2">Your Name</label>
                   <input
                     type="text"
                     id="name"
@@ -137,9 +142,7 @@ const Contact = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-gray-300 mb-2">
-                    Your Email
-                  </label>
+                  <label htmlFor="email" className="block text-gray-300 mb-2">Your Email</label>
                   <input
                     type="email"
                     id="email"
@@ -153,9 +156,7 @@ const Contact = () => {
                 </div>
               </div>
               <div>
-                <label htmlFor="subject" className="block text-gray-300 mb-2">
-                  Subject
-                </label>
+                <label htmlFor="subject" className="block text-gray-300 mb-2">Subject</label>
                 <input
                   type="text"
                   id="subject"
@@ -168,9 +169,7 @@ const Contact = () => {
                 />
               </div>
               <div>
-                <label htmlFor="message" className="block text-gray-300 mb-2">
-                  Your Message
-                </label>
+                <label htmlFor="message" className="block text-gray-300 mb-2">Your Message</label>
                 <textarea
                   id="message"
                   name="message"
@@ -200,14 +199,7 @@ const Contact = () => {
                         fill="none"
                         viewBox="0 0 24 24"
                       >
-                        <circle
-                          className="opacity-25"
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="currentColor"
-                          strokeWidth="4"
-                        ></circle>
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path
                           className="opacity-75"
                           fill="currentColor"
@@ -227,6 +219,12 @@ const Contact = () => {
               {submitStatus === "success" && (
                 <div className="bg-green-900/30 border border-green-500/30 text-green-400 px-4 py-3 rounded-lg">
                   Your message has been sent successfully! I'll get back to you soon.
+                </div>
+              )}
+
+              {submitStatus === "error" && (
+                <div className="bg-red-900/30 border border-red-500/30 text-red-400 px-4 py-3 rounded-lg">
+                  Oops! Something went wrong. Please try again later.
                 </div>
               )}
             </form>

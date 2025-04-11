@@ -11,7 +11,7 @@ const About = () => {
           <div className="w-20 h-1 bg-blue-500 mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-40 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           <div className="order-2 md:order-1">
             <h3 className="text-2xl font-bold mb-4 text-blue-400">Who am I?</h3>
             <p className="text-gray-300 mb-6 leading-relaxed">
@@ -68,8 +68,9 @@ const About = () => {
           </div>
 
           <div className="order-1 md:order-2 relative">
-            <div className="relative z-10 rounded-lg overflow-hidden border-4 border-blue-500/30 shadow-xl shadow-blue-500/10">
-              <img src="../img/image.png?height=500&width=400" alt="Debmalya Pan" className="w-full h-full object-cover" />
+            <div className="relative z-10 rounded-lg overflow-hidden ">
+              {/* if want add boser:   border-4 border-blue-500/30 shadow-xl shadow-blue-500/10border-4 border-blue-500/30 shadow-xl shadow-blue-500/10 */}
+              <img src="../img/pic.png?height=500&width=400" alt="Debmalya Pan" className="w-full h-full object-cover" />
             </div>
             <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 transform translate-x-4 translate-y-4 rounded-lg -z-10"></div>
           </div>

@@ -1,5 +1,5 @@
 import { FaJava, FaPython, FaJs, FaHtml5, FaCss3Alt, FaDatabase, FaGitAlt, FaTools } from "react-icons/fa"
-import { SiSpring, SiHibernate, SiMysql, SiMongodb, SiTailwindcss } from "react-icons/si"
+import { SiSpring, SiHibernate, SiMysql, SiMongodb, SiTailwindcss,SiSpringboot  } from "react-icons/si"
 
 const Skills = () => {
   const skillCategories = [
@@ -37,7 +37,7 @@ const Skills = () => {
     HTML: <FaHtml5 size={40} className="text-orange-500" />,
     CSS: <FaCss3Alt size={40} className="text-blue-600" />,
     Spring: <SiSpring size={40} className="text-green-500" />,
-    "Spring Boot": <SiSpring size={40} className="text-green-600" />,
+    "Spring Boot": <SiSpringboot  size={40} className="text-green-600" />,
     Hibernate: <SiHibernate size={40} className="text-yellow-600" />,
     MySQL: <SiMysql size={40} className="text-blue-700" />,
     MongoDB: <SiMongodb size={40} className="text-green-500" />,
