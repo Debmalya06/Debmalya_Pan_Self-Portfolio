@@ -119,7 +119,7 @@ const Projects = () => {
         demo: "https://youtu.be/ItU26umeodg?si=MYF8LyiZNyETIyuU",
         technologies: [
           { name: "Arduino IDE", icon: <SiArduino className="text-blue-500" /> },
-          { name: "DHT11 Sensor", icon: <FaDatabase className="text-yellow-500" /> },
+          // { name: "DHT11 Sensor", icon: <FaDatabase className="text-yellow-500" /> },
           { name: "C++", icon: <SiCplusplus  className="text-blue-500" /> },
           { name: "Python", icon: <SiPython  className="text-blue-500" /> },
           { name: "Wifi Module", icon: <FcWiFiLogo   className="text-blue-500" /> },
