@@ -23,14 +23,19 @@ const Contact = () => {
     e.preventDefault()
     setIsSubmitting(true)
 
-    try {
-      const response = await fetch("https://service-r6d8.onrender.com:10000/api/email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      })
+    const backendURL =
+    import.meta.env.MODE === "development"
+      ? "http://localhost:5000"
+      : "https://service-r6d8.onrender.com"
+  
+  try {
+    const response = await fetch(`${backendURL}/api/email`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
 
       const data = await response.json()
       if (response.ok) {
