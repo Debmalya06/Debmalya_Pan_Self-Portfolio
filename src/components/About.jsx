@@ -1,4 +1,5 @@
-import { FaMapMarkerAlt, FaEnvelope, FaPhone, FaDownload } from "react-icons/fa"
+import { FaMapMarkerAlt, FaEnvelope, FaPhone, FaDownload } from "react-icons/fa";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react"; // Import the Lottie component
 
 const About = () => {
   return (
@@ -68,16 +69,27 @@ const About = () => {
           </div>
 
           <div className="order-1 md:order-2 relative">
-            <div className="relative z-10 rounded-lg overflow-hidden ">
-              {/* if want add boser:   border-4 border-blue-500/30 shadow-xl shadow-blue-500/10border-4 border-blue-500/30 shadow-xl shadow-blue-500/10 */}
-              <img src="../img/pic.png?height=500&width=400" alt="Debmalya Pan" className="w-full h-full object-cover" />
+            <div className="relative z-10 rounded-lg overflow-hidden">
+              {/* Replace the static image with the Lottie animation */}
+              <DotLottieReact
+                src="https://lottie.host/d41097a5-0e95-4078-b15f-b0e3bc17868b/OdaTXGNmlS.lottie"
+                loop
+                autoplay
+                style={{
+                  width: "100%",
+                  maxWidth: "700px", // Adjust max width
+                  height: "auto",
+                  maxHeight: "500px", // Adjust max height
+                  margin: "0 auto",
+                }}
+                />
             </div>
             <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 transform translate-x-4 translate-y-4 rounded-lg -z-10"></div>
           </div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default About
+export default About;
