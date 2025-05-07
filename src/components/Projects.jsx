@@ -9,6 +9,7 @@ import {
   FaCss3Alt,
   FaJs,
   FaDatabase,
+  FaReact  ,
 } from "react-icons/fa";
 import { SiSpring, SiMysql, SiBootstrap, SiTailwindcss, SiArduino, SiCplusplus,SiPython,SiSpringboot } from "react-icons/si";
 import { FcWiFiLogo } from "react-icons/fc";
@@ -19,25 +20,23 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "Dev-Hotel-Management",
+      title: "AI-Powered-Email-Reply-Generator",
       description:
-        "A comprehensive hotel management system with user and employee authentication, secure registration, and database management using Spring Framework.",
-      image: "/img/Hotel.png?height=300&width=500",
+        "Designed to automate email responses using artificial intelligence. It integrates with Gmail to read incoming emails and generate contextually appropriate replies, streamlining email management and enhancing productivity.",
+      image: "/img/Email.png?height=300&width=500",
       category: "web",
-      github: "https://github.com/debmalya06/Dev-Hotel-Management",
-      demo: "#",
+      github: "https://github.com/Debmalya06/AI-Powered-Email-Reply-Generator",
+      demo: "https://ai-powered-email-reply-generator-1.onrender.com/",
       technologies: [
-        { name: "Spring Framework", icon: <SiSpring className="text-green-500" /> },
-        { name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
-        { name: "CSS", icon: <FaCss3Alt className="text-blue-500" /> },
+        { name: "Spring Boot", icon: <SiSpringboot className="text-green-400" /> },
+        { name: "React", icon: <FaReact className="text-cyan-300" /> },
+        { name: "Tailwindcss", icon: <SiTailwindcss className="text-cyan-400" /> },
         { name: "JavaScript", icon: <FaJs className="text-yellow-400" /> },
-        { name: "MySQL", icon: <SiMysql className="text-blue-600" /> },
       ],
       features: [
-        "User and employee authentication and authorization",
-        "Secure registration and login with data validation",
-        "MySQL database management system",
-        "Seamless data flow between frontend and backend",
+        "Utilizes AI models to craft relevant email replies.",
+        "Provides a user-friendly interface for managing email interactions.",
+        "USe chrome extension connects securely to Gmail accounts to fetch and respond to emails.",
       ],
     },
     {
@@ -130,6 +129,29 @@ const Projects = () => {
 "Fire Detection: The system includes a fire detection mechanism.",
 "Real-time Notifications: Automated WhatsApp notifications.",
 "Comprehensive Safety: Ensures comprehensive home safety.",
+        ],
+      },
+      {
+        id: 6,
+        title: "Dev-Hotel-Management",
+        description:
+          "A comprehensive hotel management system with user and employee authentication, secure registration, and database management using Spring Framework.",
+        image: "/img/Hotel.png?height=300&width=500",
+        category: "web",
+        github: "https://github.com/debmalya06/Dev-Hotel-Management",
+        demo: "#",
+        technologies: [
+          { name: "Spring Framework", icon: <SiSpring className="text-green-500" /> },
+          { name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
+          { name: "CSS", icon: <FaCss3Alt className="text-blue-500" /> },
+          { name: "JavaScript", icon: <FaJs className="text-yellow-400" /> },
+          { name: "MySQL", icon: <SiMysql className="text-blue-600" /> },
+        ],
+        features: [
+          "User and employee authentication and authorization",
+          "Secure registration and login with data validation",
+          "MySQL database management system",
+          "Seamless data flow between frontend and backend",
         ],
       },
   ];
