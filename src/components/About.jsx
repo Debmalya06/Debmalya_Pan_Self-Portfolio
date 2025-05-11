@@ -13,7 +13,7 @@ const About = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          <div className="order-2 md:order-1">
+          <div className="order-2 md:order-1 m-2">
             <h3 className="text-2xl font-bold mb-4 text-blue-400">Who am I?</h3>
             <p className="text-gray-300 mb-6 leading-relaxed">
               I'm a passionate Java Full Stack Developer with expertise in building robust web applications. My journey
@@ -72,7 +72,7 @@ const About = () => {
             <div className="relative z-10 rounded-lg overflow-hidden">
               {/* Replace the static image with the Lottie animation */}
               <DotLottieReact
-                src="https://lottie.host/d41097a5-0e95-4078-b15f-b0e3bc17868b/OdaTXGNmlS.lottie"
+                src="https://lottie.host/1ea00622-161d-4102-ac33-a449424558de/GgJOf7y2Ka.lottie"
                 loop
                 autoplay
                 style={{
