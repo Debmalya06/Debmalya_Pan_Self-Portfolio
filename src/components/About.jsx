@@ -30,7 +30,7 @@ const About = () => {
               adapting to new technologies and methodologies.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+            {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-blue-900/30 flex items-center justify-center text-blue-400">
                   <FaMapMarkerAlt />
@@ -58,7 +58,7 @@ const About = () => {
                   <p className="text-white">+91 7439033371</p>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <a
               href="#"

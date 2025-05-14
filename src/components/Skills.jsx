@@ -1,6 +1,20 @@
 import { FaJava, FaPython, FaJs, FaHtml5, FaCss3Alt, FaDatabase, FaGitAlt, FaTools } from "react-icons/fa"
 import { SiSpring, SiHibernate, SiMysql, SiMongodb, SiTailwindcss,SiSpringboot  } from "react-icons/si"
 
+// import { useEffect } from "react"
+// import AOS from "aos";
+// import "aos/dist/aos.css";
+
+
+// useEffect(() => {
+//   AOS.init({
+//     duration: 1000,
+//     easing: "ease-in-out",
+//     once: true, // Ensures animation occurs only once
+//   });
+// }, []);
+
+
 const Skills = () => {
   const skillCategories = [
     {
@@ -83,8 +97,8 @@ const Skills = () => {
           ))}
         </div>
 
-        <div className="bg-gray-800/30 rounded-2xl p-8 border border-gray-700/50">
-          <h3 className="text-2xl font-bold mb-8 text-center text-blue-400">Technical Proficiency</h3>
+        <div data-aos="zoom-in" className="bg-gray-800/30 rounded-2xl p-8 border border-gray-700/50">
+          <h3 className="text-2xl font-bold mb-8 text-center text-blue-400" >Technical Proficiency</h3>
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-8 justify-items-center">
             {Object.entries(skillIcons).map(([skill, icon], index) => (
               <div key={index} className="flex flex-col items-center gap-2 skill-icon">

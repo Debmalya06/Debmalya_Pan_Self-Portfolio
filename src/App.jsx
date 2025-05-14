@@ -12,6 +12,9 @@ import Certifications from "./components/Certification"
 import Contact from "./components/Contact"
 import Footer from "./components/Footer"
 import Loader from "./components/Loader"
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -22,7 +25,12 @@ function App() {
       setLoading(false);
       console.log("App loading state set to false");
     }, 2000);
-  
+
+    AOS.init({
+    duration: 1000, // Animation duration in milliseconds
+    easing: "ease-in-out", // Easing function
+   });
+
     return () => clearTimeout(timer);
   }, []);
 

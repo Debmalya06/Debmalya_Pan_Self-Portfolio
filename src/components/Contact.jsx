@@ -100,7 +100,7 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
+              {/* <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-blue-900/30 flex items-center justify-center text-blue-400">
                   <FaPhone size={20} />
                 </div>
@@ -110,10 +110,10 @@ const Contact = () => {
                     +91 7439033371
                   </a>
                 </div>
-              </div>
+              </div> */}
             </div>
 
-            <div className="mt-12">
+            {/* <div className="mt-12">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29494.660069532867!2d88.24999999999999!3d22.35!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027a2eeb4ef63b%3A0x586225a78606389f!2sAmtala%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1649926546569!5m2!1sen!2sin"
                 width="100%"
@@ -125,11 +125,11 @@ const Contact = () => {
                 title="Amtala, West Bengal"
                 className="shadow-lg"
               ></iframe>
-            </div>
+            </div> */}
           </div>
 
           {/* Right Form */}
-          <div>
+          <div >
             <h3 className="text-2xl font-bold mb-6 text-blue-400">Send Me a Message</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
