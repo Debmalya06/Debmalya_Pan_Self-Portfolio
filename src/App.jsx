@@ -1,59 +1,38 @@
-"use client"
-
-import { useState, useEffect } from "react"
-import Navbar from "./components/Navbar"
-import Hero from "./components/MyHero"
-import About from "./components/About"
-import Skills from "./components/Skills"
-import Projects from "./components/Projects"
-import Education from "./components/Education"
-import Experience from "./components/Experience"
-import Certifications from "./components/Certification"
-import Contact from "./components/Contact"
-import Footer from "./components/Footer"
-import Loader from "./components/Loader"
+import { useState, useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Loader from "./components/Loader";
 import AOS from "aos";
 import "aos/dist/aos.css";
-
+import ProjectsPage from "./components/ProjectsPage";
+import Home from "./components/Home";
 
 function App() {
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
+  const location = useLocation();
 
   useEffect(() => {
-    console.log("App loading state before timeout:", loading);
-    const timer = setTimeout(() => {
-      setLoading(false);
-      console.log("App loading state set to false");
-    }, 2000);
-
-    AOS.init({
-    duration: 1000, // Animation duration in milliseconds
-    easing: "ease-in-out", // Easing function
-   });
-
+    const timer = setTimeout(() => setLoading(false), 2000);
+    AOS.init({ duration: 1000, easing: "ease-in-out" });
     return () => clearTimeout(timer);
   }, []);
 
-  if (loading) {
-    return <Loader />
-  }
+  if (loading) return <Loader />;
 
   return (
     <div className="bg-gradient-to-br from-gray-900 to-gray-950 text-white min-h-screen">
-      <Navbar />
+      {/* Only show Navbar on home page */}
+      {location.pathname === "/" && <Navbar />}
       <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Education />
-        <Experience />
-        <Certifications />
-        <Contact />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+        </Routes>
       </main>
       {/* <Footer /> */}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import Loader from "./Loader";
 import {
   FaGithub,
   FaExternalLinkAlt,
@@ -13,9 +15,20 @@ import {
 } from "react-icons/fa";
 import { SiSpring, SiMysql, SiBootstrap, SiTailwindcss, SiArduino, SiCplusplus,SiPython,SiSpringboot } from "react-icons/si";
 import { FcWiFiLogo } from "react-icons/fc";
+// import { Link } from "react-router-dom";
+import { ExternalLink } from "lucide-react";
 
 const Projects = () => {
   const [activeTab, setActiveTab] = useState("all");
+  const [redirectLoading, setRedirectLoading] = useState(false);
+  const navigate = useNavigate();
+  
+   const handleViewMore = () => {
+    setRedirectLoading(true);
+    setTimeout(() => {
+      navigate("/projects");
+    }, 1000); // 1 second loader, adjust as needed
+  };
 
   const projects = [
     {
@@ -163,7 +176,7 @@ const Projects = () => {
   return (
     <section id="projects" className="py-20 bg-gray-900">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+       <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             <span className="gradient-text">My Projects</span>
           </h2>
@@ -269,7 +282,7 @@ const Projects = () => {
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        {/* <div className="text-center mt-12">
           <a
             href="https://github.com/debmalya06"
             target="_blank"
@@ -278,8 +291,33 @@ const Projects = () => {
           >
             <FaGithub /> View More on GitHub
           </a>
+        </div> */}
+            <div className="text-center">
+          <button
+            onClick={handleViewMore}
+            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg text-lg font-medium transition-colors m-5"
+            disabled={redirectLoading}
+          >
+            {redirectLoading ? (
+              <>
+                <Loader />
+                Redirecting...
+              </>
+            ) : (
+              <>
+                View More Projects
+                <ExternalLink className="w-4 h-4" />
+              </>
+            )}
+          </button>
         </div>
       </div>
+      {/* Optionally, show Loader as overlay */}
+      {redirectLoading && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
+          <Loader />
+        </div>
+      )}
     </section>
   );
 };
