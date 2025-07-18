@@ -13,7 +13,7 @@ import {
   FaDatabase,
   FaReact  ,
 } from "react-icons/fa";
-import { SiSpring, SiMysql, SiBootstrap, SiTailwindcss, SiArduino, SiCplusplus,SiPython,SiSpringboot, SiReact, SiMongodb,SiFastapi } from "react-icons/si";
+import { SiSpring, SiMysql, SiBootstrap, SiTailwindcss, SiArduino, SiCplusplus,SiPython,SiSpringboot, SiReact, SiMongodb,SiFastapi  } from "react-icons/si";
 import { FcWiFiLogo } from "react-icons/fc";
 // import { Link } from "react-router-dom";
 import { ExternalLink } from "lucide-react";
@@ -36,7 +36,7 @@ const Projects = () => {
       title: "AI-Powered-Email-Reply-Generator",
       description:
         "Designed to automate email responses using artificial intelligence. It integrates with Gmail to read incoming emails and generate contextually appropriate replies, streamlining email management and enhancing productivity.",
-      image: "/img/Email.png?height=300&width=500",
+      image: "/img/em.png?height=300&width=500",
       category: "web",
       github: "https://github.com/Debmalya06/AI-Powered-Email-Reply-Generator",
       demo: "https://ai-powered-email-reply-generator-1.onrender.com/",
@@ -76,35 +76,36 @@ const Projects = () => {
         "CRUD operations for managing patients, appointments, and doctor details",
       ],
     },
-    {
+ 
+{
       id: 3,
-      title: "Educare",
+      title: "Room Chat",
       description:
-        "An educational learning platform providing access to courses, internships, and training opportunities for students using Spring Boot.",
-      image: "/img/Educare.png?height=300&width=500",
+        "Room chat is a room based chat application where multiple users can join a room and chat with each other.",
+      image: "/img/chat.png?height=300&width=500",
       category: "web",
-      github: "https://github.com/debmalya06/educare",
-      demo: "#",
+      github: "https://github.com/Debmalya06/Chat-App",
+      demo: "https://chat-app-38ks.onrender.com",
       technologies: [
         { name: "Spring Boot", icon: <SiSpringboot  className="text-green-600" /> },
         { name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
-        { name: "CSS", icon: <FaCss3Alt className="text-blue-500" /> },
-        { name: "Database", icon: <FaDatabase className="text-yellow-500" /> },
+        { name: "Tailwind", icon: <SiTailwindcss className="text-blue-500" /> },
+        { name: "React", icon: <SiReact className="text-blue-500" /> },
+         { name: "MongoDB", icon: <SiMongodb className="text-green-300" /> },
       ],
       features: [
-        "Course application system with automated confirmation emails",
-        "Admin notification system for new applications",
-        "Access to courses, internships, and training opportunities",
-        "Ongoing development with planned features like online book storage",
+        "Designed a room-based chat web application where multiple user can connect at a time by joining the room",
+        "Developed that web app using React.js, Tailwind, Spring Boot, MongoDB, WebSocket, REST API",
+        "This application is easy to use and enhances the communications between 10+ users",
+        
       ],
     },
-
     {
         id: 4,
         title: "Devm Todo",
         description:
           "Devm Todo is a task management system built with Spring Boot & Thymeleaf that integrates Google's Gemini API to enhance task input with natural language processing (NLP). Users can add tasks in casual language, and the AI will correct and structure the input before saving it to the database..",
-        image: "/img/todo.png?height=300&width=500",
+        image: "/img/todo2.png?height=300&width=500",
         category: "web",
         github: "https://github.com/debmalya06/Devm-ToDo",
         demo: "#",
@@ -144,29 +145,6 @@ const Projects = () => {
 "Comprehensive Safety: Ensures comprehensive home safety.",
         ],
       },
-      // {
-      //   id: 6,
-      //   title: "Dev-Hotel-Management",
-      //   description:
-      //     "A comprehensive hotel management system with user and employee authentication, secure registration, and database management using Spring Framework.",
-      //   image: "/img/Hotel.png?height=300&width=500",
-      //   category: "web",
-      //   github: "https://github.com/debmalya06/Dev-Hotel-Management",
-      //   demo: "#",
-      //   technologies: [
-      //     { name: "Spring Framework", icon: <SiSpring className="text-green-500" /> },
-      //     { name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
-      //     { name: "CSS", icon: <FaCss3Alt className="text-blue-500" /> },
-      //     { name: "JavaScript", icon: <FaJs className="text-yellow-400" /> },
-      //     { name: "MySQL", icon: <SiMysql className="text-blue-600" /> },
-      //   ],
-      //   features: [
-      //     "User and employee authentication and authorization",
-      //     "Secure registration and login with data validation",
-      //     "MySQL database management system",
-      //     "Seamless data flow between frontend and backend",
-      //   ],
-      // },
        {
         id: 6,
         title: "Little Guardian",

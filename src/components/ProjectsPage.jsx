@@ -11,13 +11,17 @@ const ProjectsPage = () => {
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("All")
 
-  const filteredProjects = allProjects.filter((project) => {
-    const matchesSearch =
-      project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      project.description.toLowerCase().includes(searchTerm.toLowerCase())
-    const matchesCategory = selectedCategory === "All" || project.category === selectedCategory
-    return matchesSearch && matchesCategory
-  })
+const filteredProjects =
+  selectedCategory === "All"
+    ? allProjects.filter(project =>
+        project.title.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    : allProjects.filter(project =>
+        (Array.isArray(project.category)
+          ? project.category.includes(selectedCategory)
+          : project.category === selectedCategory) &&
+        project.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
 
   return (
     <div className="min-h-screen bg-slate-900 text-white">
