@@ -1,123 +1,38 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-// import { ToastContainer } from "react-toastify"
-// import "react-toastify/dist/ReactToastify.css"
-
-import LandingPage from "./pages/LandingPage"
-import LoginPage from "./pages/auth/LoginPage"
-import RegisterPage from "./pages/auth/RegisterPage"
-import CandidateDashboard from "./pages/dashboard/candidate/CandidateDashboard"
-import CandidateProfile from "./pages/dashboard/candidate/CandidateProfile"
-import CompanyDashboard from "./pages/dashboard/company/CompanyDashboard"
-import PostJobPage from "./pages/dashboard/company/PostJobPage"
-import CandidatesPage from "./pages/dashboard/company/CandidatesPage"
-import CandidateDashboardLayout from "./layouts/CandidateDashboardLayout"
-import CompanyDashboardLayout from "./layouts/CompanyDashboardLayout"
-import FindJobsPage from "./pages/dashboard/candidate/FindJobsPage";
-import ApplicationPage from "./pages/dashboard/candidate/ApplicationPage";
-import NotificationPage from "./pages/dashboard/candidate/NotificationPage";
-import ManageJobsPage from "./pages/dashboard/company/ManageJobsPage";
+import { useState, useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Loader from "./components/Loader";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import ProjectsPage from "./components/ProjectsPage";
+import Home from "./components/Home";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+  const location = useLocation();
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 2000);
+    AOS.init({ duration: 1000, easing: "ease-in-out" });
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) return <Loader />;
+
   return (
-    <Router>
-      <Routes>
-        {/* Public Routes */}
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/auth/login" element={<LoginPage />} />
-        <Route path="/auth/register" element={<RegisterPage />} />
-
-        {/* Candidate Dashboard Routes */}
-        <Route
-          path="/dashboard/candidate"
-          element={
-            <CandidateDashboardLayout>
-              <CandidateDashboard />
-            </CandidateDashboardLayout>
-          }
-        />
-        <Route
-          path="/dashboard/candidate/profile"
-          element={
-            <CandidateDashboardLayout>
-              <CandidateProfile />
-            </CandidateDashboardLayout>
-          }
-        />
-          <Route
-          path="/dashboard/candidate/jobs"
-          element={
-            <CandidateDashboardLayout>
-              <FindJobsPage/>
-            </CandidateDashboardLayout>
-          }
-        />
-
-<Route
-          path="/dashboard/candidate/applications"
-          element={
-            <CandidateDashboardLayout>
-              <ApplicationPage/>
-            </CandidateDashboardLayout>
-          }
-        />
-
-<Route
-          path="/dashboard/candidate/notifications"
-          element={
-            <CandidateDashboardLayout>
-              <NotificationPage/>
-            </CandidateDashboardLayout>
-          }
-        />
-
-  <Route
-
-  path="/dashboard"
-  element={<Navigate to="/dashboard/candidate" replace />}
-/>
-
-
-        {/* Company Dashboard Routes */}
-        <Route
-          path="/dashboard/company"
-          element={
-            <CompanyDashboardLayout>
-              <CompanyDashboard />
-            </CompanyDashboardLayout>
-          }
-        />
-        <Route
-          path="/dashboard/company/post-job"
-          element={
-            <CompanyDashboardLayout>
-              <PostJobPage />
-            </CompanyDashboardLayout>
-          }
-        />
-   <Route
-          path="/dashboard/company/jobs"
-          element={
-            <CompanyDashboardLayout>
-              <ManageJobsPage />
-            </CompanyDashboardLayout>
-          }
-        />
-
-
-        <Route
-          path="/dashboard/company/candidates"
-          element={
-            <CompanyDashboardLayout>
-              <CandidatesPage />
-            </CompanyDashboardLayout>
-          }
-        />
-      </Routes>
-
-      {/* Toastify Container (global notification handler) */}
-      {/* <ToastContainer position="top-center" autoClose={2000} /> */}
-    </Router>
-  )
+    <div className="bg-gradient-to-br from-gray-900 to-gray-950 text-white min-h-screen">
+      {/* Only show Navbar on home page */}
+      {location.pathname === "/" && <Navbar />}
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+        </Routes>
+      </main>
+      {/* <Footer /> */}
+    </div>
+  );
 }
 
-export default App
+export default App;
