@@ -1,5 +1,5 @@
-import { FaJava, FaPython, FaJs, FaHtml5, FaCss3Alt, FaDatabase, FaGitAlt, FaTools } from "react-icons/fa";
-import { SiSpring, SiHibernate, SiMysql, SiMongodb, SiTailwindcss, SiSpringboot } from "react-icons/si";
+import { FaJava, FaPython, FaJs, FaHtml5, FaCss3Alt, FaDatabase, FaGitAlt, FaTools, FaReact } from "react-icons/fa";
+import { SiSpring, SiHibernate, SiMysql, SiMongodb, SiTailwindcss, SiSpringboot, SiPostman, SiArduino } from "react-icons/si";
 
 const skillIcons = [
   <FaJava size={40} className="text-blue-500" />,
@@ -14,6 +14,11 @@ const skillIcons = [
   <SiMongodb size={40} className="text-green-500" />,
   <SiTailwindcss size={40} className="text-blue-400" />,
   <FaGitAlt size={40} className="text-orange-600" />,
+  <FaReact size={40} className="text-blue-500" />,
+  <SiPostman size={40} className="text-orange-500" />,
+  <SiArduino size={40} className="text-blue-500" />,
+
+
 ];
 
 // Duplicate icons to ensure smooth looping

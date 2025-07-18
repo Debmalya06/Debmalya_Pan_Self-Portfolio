@@ -13,7 +13,7 @@ import {
   FaDatabase,
   FaReact  ,
 } from "react-icons/fa";
-import { SiSpring, SiMysql, SiBootstrap, SiTailwindcss, SiArduino, SiCplusplus,SiPython,SiSpringboot } from "react-icons/si";
+import { SiSpring, SiMysql, SiBootstrap, SiTailwindcss, SiArduino, SiCplusplus,SiPython,SiSpringboot, SiReact, SiMongodb,SiFastapi } from "react-icons/si";
 import { FcWiFiLogo } from "react-icons/fc";
 // import { Link } from "react-router-dom";
 import { ExternalLink } from "lucide-react";
@@ -144,27 +144,54 @@ const Projects = () => {
 "Comprehensive Safety: Ensures comprehensive home safety.",
         ],
       },
-      {
+      // {
+      //   id: 6,
+      //   title: "Dev-Hotel-Management",
+      //   description:
+      //     "A comprehensive hotel management system with user and employee authentication, secure registration, and database management using Spring Framework.",
+      //   image: "/img/Hotel.png?height=300&width=500",
+      //   category: "web",
+      //   github: "https://github.com/debmalya06/Dev-Hotel-Management",
+      //   demo: "#",
+      //   technologies: [
+      //     { name: "Spring Framework", icon: <SiSpring className="text-green-500" /> },
+      //     { name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
+      //     { name: "CSS", icon: <FaCss3Alt className="text-blue-500" /> },
+      //     { name: "JavaScript", icon: <FaJs className="text-yellow-400" /> },
+      //     { name: "MySQL", icon: <SiMysql className="text-blue-600" /> },
+      //   ],
+      //   features: [
+      //     "User and employee authentication and authorization",
+      //     "Secure registration and login with data validation",
+      //     "MySQL database management system",
+      //     "Seamless data flow between frontend and backend",
+      //   ],
+      // },
+       {
         id: 6,
-        title: "Dev-Hotel-Management",
+        title: "Little Guardian",
         description:
-          "A comprehensive hotel management system with user and employee authentication, secure registration, and database management using Spring Framework.",
-        image: "/img/Hotel.png?height=300&width=500",
+          "Little Guardian is a web application that's integrated with IoT and ML to provide safety and baby care.",
+        image: "/img/lg.jpg?height=300&width=500",
         category: "web",
-        github: "https://github.com/debmalya06/Dev-Hotel-Management",
-        demo: "#",
+        github: "https://github.com/Debmalya06/BabySafetyWebsiteWithIOT",
+        demo: "https://www.littleguardian.work.gd",
         technologies: [
-          { name: "Spring Framework", icon: <SiSpring className="text-green-500" /> },
-          { name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
-          { name: "CSS", icon: <FaCss3Alt className="text-blue-500" /> },
+          { name: "Spring Boot", icon: <SiSpringboot className="text-green-500" /> },
+          { name: "React", icon: <SiReact className="text-blue-500" /> },
+          { name: "Tailwind", icon: <SiTailwindcss className="text-blue-500" /> },
           { name: "JavaScript", icon: <FaJs className="text-yellow-400" /> },
-          { name: "MySQL", icon: <SiMysql className="text-blue-600" /> },
+          { name: "MonGoDb", icon: <SiMongodb className="text-green-400" /> },
+          { name: "Python", icon: <SiPython className="text-blue-400" /> },
+          { name: "FastAPI", icon: < SiFastapi style={{color: '#009485'}} /> },
+
+          
         ],
         features: [
-          "User and employee authentication and authorization",
-          "Secure registration and login with data validation",
-          "MySQL database management system",
-          "Seamless data flow between frontend and backend",
+          "Developed a web application that will integrate with baby observations and the safety IoT system.",
+          "Developed over 10 REST APIs to handle facial recognition, feeding data, and emergency alerts while serving as the team’s lead backend developer. This enhanced system scalability and real-time response efficiency.",
+          "Assure face-cover detection and emotion classification resulted in a 50% increase in safety coverage. Using Spring Security, ensure secure user authentication, and REST APIs were used to manage feeding data.",
+      
         ],
       },
   ];
