@@ -32,7 +32,35 @@ const Projects = () => {
 
   const projects = [
     {
-      id: 1,
+        id: 1,
+        title: "Little Guardian",
+        description:
+          "Little Guardian is a web application that's integrated with IoT and ML to provide safety and baby care.",
+        image: "/img/lg.jpg?height=300&width=500",
+        category: "web",
+        github: "https://github.com/Debmalya06/BabySafetyWebsiteWithIOT",
+        demo: "https://www.littleguardian.work.gd",
+        technologies: [
+          { name: "Spring Boot", icon: <SiSpringboot className="text-green-500" /> },
+          { name: "React", icon: <SiReact className="text-blue-500" /> },
+          { name: "Tailwind", icon: <SiTailwindcss className="text-blue-500" /> },
+          { name: "JavaScript", icon: <FaJs className="text-yellow-400" /> },
+          { name: "MonGoDb", icon: <SiMongodb className="text-green-400" /> },
+          { name: "Python", icon: <SiPython className="text-blue-400" /> },
+          { name: "FastAPI", icon: < SiFastapi style={{color: '#009485'}} /> },
+
+          
+        ],
+        features: [
+          "Developed a web application that will integrate with baby observations and the safety IoT system.",
+          "Developed over 10 REST APIs to handle facial recognition, feeding data, and emergency alerts",
+          "Implemented a machine learning model to detect baby crying reason and show it on dashboard.",
+          "Implemented a real-time alert system for emergencies, enhancing response time by 30%.",
+      
+        ],
+      },
+    {
+      id: 2,
       title: "AI-Powered-Email-Reply-Generator",
       description:
         "Designed to automate email responses using artificial intelligence. It integrates with Gmail to read incoming emails and generate contextually appropriate replies, streamlining email management and enhancing productivity.",
@@ -52,30 +80,7 @@ const Projects = () => {
         "USe chrome extension connects securely to Gmail accounts to fetch and respond to emails.",
       ],
     },
-    {
-      id: 2,
-      title: "Hospital Management System",
-      description:
-        "A comprehensive hospital management system with role-based access control for doctors, administrators, and patients using Java, JSP, and MySQL.",
-      image: "/img/hospital.png?height=300&width=500",
-      category: "web",
-      github: "https://github.com/debmalya06/DevLifeCare-Hospital ",
-      demo: "#",
-      technologies: [
-        { name: "Java", icon: <FaJava className="text-blue-500" /> },
-        { name: "JSP", icon: <FaJava className="text-red-500" /> },
-        { name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
-        { name: "CSS", icon: <FaCss3Alt className="text-blue-500" /> },
-        { name: "Bootstrap", icon: <SiBootstrap className="text-purple-500" /> },
-        { name: "MySQL", icon: <SiMysql className="text-blue-600" /> },
-      ],
-      features: [
-        "Role-based access control for doctors, administrators, and patients",
-        "MySQL database architecture for patient records and appointments",
-        "Secure authentication and authorization using JSP",
-        "CRUD operations for managing patients, appointments, and doctor details",
-      ],
-    },
+   
  
 {
       id: 3,
@@ -88,7 +93,6 @@ const Projects = () => {
       demo: "https://chat-app-38ks.onrender.com",
       technologies: [
         { name: "Spring Boot", icon: <SiSpringboot  className="text-green-600" /> },
-        { name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
         { name: "Tailwind", icon: <SiTailwindcss className="text-blue-500" /> },
         { name: "React", icon: <SiReact className="text-blue-500" /> },
          { name: "MongoDB", icon: <SiMongodb className="text-green-300" /> },
@@ -146,32 +150,30 @@ const Projects = () => {
         ],
       },
        {
-        id: 6,
-        title: "Little Guardian",
-        description:
-          "Little Guardian is a web application that's integrated with IoT and ML to provide safety and baby care.",
-        image: "/img/lg.jpg?height=300&width=500",
-        category: "web",
-        github: "https://github.com/Debmalya06/BabySafetyWebsiteWithIOT",
-        demo: "https://www.littleguardian.work.gd",
-        technologies: [
-          { name: "Spring Boot", icon: <SiSpringboot className="text-green-500" /> },
-          { name: "React", icon: <SiReact className="text-blue-500" /> },
-          { name: "Tailwind", icon: <SiTailwindcss className="text-blue-500" /> },
-          { name: "JavaScript", icon: <FaJs className="text-yellow-400" /> },
-          { name: "MonGoDb", icon: <SiMongodb className="text-green-400" /> },
-          { name: "Python", icon: <SiPython className="text-blue-400" /> },
-          { name: "FastAPI", icon: < SiFastapi style={{color: '#009485'}} /> },
-
-          
-        ],
-        features: [
-          "Developed a web application that will integrate with baby observations and the safety IoT system.",
-          "Developed over 10 REST APIs to handle facial recognition, feeding data, and emergency alerts while serving as the team’s lead backend developer. This enhanced system scalability and real-time response efficiency.",
-          "Assure face-cover detection and emotion classification resulted in a 50% increase in safety coverage. Using Spring Security, ensure secure user authentication, and REST APIs were used to manage feeding data.",
-      
-        ],
-      },
+      id: 6,
+      title: "Hospital Management System",
+      description:
+        "A comprehensive hospital management system with role-based access control for doctors, administrators, and patients using Java, JSP, and MySQL.",
+      image: "/img/hospital.png?height=300&width=500",
+      category: "web",
+      github: "https://github.com/debmalya06/DevLifeCare-Hospital ",
+      demo: "#",
+      technologies: [
+        { name: "Java", icon: <FaJava className="text-blue-500" /> },
+        { name: "JSP", icon: <FaJava className="text-red-500" /> },
+        { name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
+        { name: "CSS", icon: <FaCss3Alt className="text-blue-500" /> },
+        { name: "Bootstrap", icon: <SiBootstrap className="text-purple-500" /> },
+        { name: "MySQL", icon: <SiMysql className="text-blue-600" /> },
+      ],
+      features: [
+        "Role-based access control for doctors, administrators, and patients",
+        "MySQL database architecture for patient records and appointments",
+        "Secure authentication and authorization using JSP",
+        "CRUD operations for managing patients, appointments, and doctor details",
+      ],
+    },
+       
   ];
 
   const filteredProjects = activeTab === "all" ? projects : projects.filter((project) => project.category === activeTab);
