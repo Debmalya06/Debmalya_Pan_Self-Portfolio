@@ -21,9 +21,10 @@ import { ExternalLink } from "lucide-react";
 const Projects = () => {
   const [activeTab, setActiveTab] = useState("all");
   const [redirectLoading, setRedirectLoading] = useState(false);
+  const [expanded, setExpanded] = useState({}); // Track expanded state per project
   const navigate = useNavigate();
-  
-   const handleViewMore = () => {
+
+  const handleViewMore = () => {
     setRedirectLoading(true);
     setTimeout(() => {
       navigate("/projects");
@@ -176,9 +177,20 @@ const Projects = () => {
        
   ];
 
-  const filteredProjects = activeTab === "all" ? projects : projects.filter((project) => project.category === activeTab);
+  const filteredProjects =
+    activeTab === "all"
+      ? projects
+      : projects.filter((project) =>
+          Array.isArray(project.category)
+            ? project.category.includes(activeTab)
+            : project.category === activeTab
+        );
 
 
+
+  const handleExpand = (id) => {
+    setExpanded((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
 
   return (
     <section id="projects" className="py-20 bg-gray-900">
@@ -225,7 +237,10 @@ const Projects = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project) => (
-            <div key={project.id} className="project-card rounded-xl overflow-hidden card-hover">
+            <div
+              key={project.id}
+              className="project-card rounded-xl overflow-hidden card-hover flex flex-col h-full bg-gray-800"
+            >
               <div className="relative overflow-hidden group">
                 <img
                   src={project.image || "/placeholder.svg"}
@@ -253,37 +268,50 @@ const Projects = () => {
                   </div>
                 </div>
               </div>
-              <div className="p-6">
+              {/* Make this div grow to fill space, pushing the button down */}
+              <div className="p-6 flex flex-col flex-1">
                 <h3 className="text-xl font-bold mb-2 text-blue-400">{project.title}</h3>
                 <p className="text-gray-300 mb-4 text-sm">{project.description}</p>
 
-                <div className="mb-4">
-                  <h4 className="text-sm font-semibold text-gray-400 mb-2">Key Features:</h4>
-                  <ul className="text-gray-300 text-sm space-y-1">
-                    {project.features.map((feature, index) => (
-                      <li key={index} className="flex items-start">
-                        <span className="text-blue-500 mr-2">•</span>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="text-sm font-semibold text-gray-400 mb-2">Technologies:</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech, index) => (
-                      <div
-                        key={index}
-                        className="flex items-center gap-1 bg-gray-800 px-2 py-1 rounded-md text-xs"
-                        title={tech.name}
-                      >
-                        {tech.icon}
-                        <span className="text-gray-300">{tech.name}</span>
+                {expanded[project.id] && (
+                  <>
+                    <div className="mb-4">
+                      <h4 className="text-sm font-semibold text-gray-400 mb-2">Key Features:</h4>
+                      <ul className="text-gray-300 text-sm space-y-1">
+                        {project.features.map((feature, index) => (
+                          <li key={index} className="flex items-start">
+                            <span className="text-blue-500 mr-2">•</span>
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-semibold text-gray-400 mb-2">Technologies:</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {project.technologies.map((tech, index) => (
+                          <div
+                            key={index}
+                            className="flex items-center gap-1 bg-gray-800 px-2 py-1 rounded-md text-xs"
+                            title={tech.name}
+                          >
+                            {tech.icon}
+                            <span className="text-gray-300">{tech.name}</span>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                </div>
+                    </div>
+                  </>
+                )}
+
+                {/* Spacer to push button to bottom */}
+                <div className="flex-1"></div>
+              <button
+  className="mt-4 px-4 py-2 bg-transparent border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white rounded transition-all text-sm"
+  onClick={() => handleExpand(project.id)}
+>
+  {expanded[project.id] ? "Hide Details" : "View More"}
+</button>
               </div>
             </div>
           ))}
@@ -299,6 +327,11 @@ const Projects = () => {
             <FaGithub /> View More on GitHub
           </a>
         </div> */}
+
+
+
+
+
             <div className="text-center">
           <button
             onClick={handleViewMore}
