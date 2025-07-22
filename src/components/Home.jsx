@@ -6,6 +6,8 @@ import Education from "./Education";
 import Experience from "./Experience";
 import Certifications from "./Certification";
 import Contact from "./Contact";
+import Cursor from "./cursor";
+
 
 const Home = () => (
   <>
@@ -17,6 +19,8 @@ const Home = () => (
     <Experience />
     <Certifications />
     <Contact />
+    <Cursor />
+
   </>
 );
 

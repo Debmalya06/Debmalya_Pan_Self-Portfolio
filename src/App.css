@@ -63,3 +63,11 @@ body {
   transform: translateY(-3px);
   box-shadow: 0 10px 40px 0 rgba(31, 38, 135, 0.5);
 }
+@keyframes hueRotate {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}

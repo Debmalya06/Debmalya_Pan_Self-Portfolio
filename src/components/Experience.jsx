@@ -3,12 +3,12 @@ import { FaBriefcase, FaCalendarAlt, FaCertificate } from "react-icons/fa"
 const Experience = () => {
   const experienceData = [
     {
-      position: "EduSkill Virtual Internship",
-      company: "EduSkill",
-      period: "2023",
+      position: "Full Stack Developer Intern",
+      company: "Educare Intern Technology",
+      period: "Dec 2024 - April 2025",
       description:
-        "Participated in a virtual internship program focused on machine learning and artificial intelligence supported by AWS. Explored practical applications of AI and ML through hands-on projects.",
-      certificate: "AWS AI-ML Virtual Internship By EduSkill",
+        "Increased communication and my understanding of web development by 70% and gained practical experience. Developed a website that helps users to apply for their internship; 100+ users applied through that website.",
+      // certificate: "AWS AI-ML Virtual Internship By EduSkill",
       icon: <FaBriefcase size={24} className="text-blue-500" />,
     },
   ]

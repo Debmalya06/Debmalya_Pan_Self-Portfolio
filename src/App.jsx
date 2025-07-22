@@ -23,6 +23,7 @@ function App() {
   return (
     <div className="bg-gradient-to-br from-gray-900 to-gray-950 text-white min-h-screen">
       {/* Only show Navbar on home page */}
+
       {location.pathname === "/" && <Navbar />}
       <main>
         <Routes>
