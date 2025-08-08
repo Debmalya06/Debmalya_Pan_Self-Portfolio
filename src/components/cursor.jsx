@@ -5,14 +5,22 @@ const NUM_TRAILS = 12;
 function Cursor() {
   const trails = useRef([]);
   const [tick, setTick] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const flicker = () => setTick(t => t + 1);
-    const interval = setInterval(flicker, 28);
-    return () => clearInterval(interval);
+    // Detect mobile device (pointer: coarse covers most touch devices)
+    setIsMobile(window.matchMedia("(pointer: coarse)").matches);
   }, []);
 
   useEffect(() => {
+    if (isMobile) return;
+    const flicker = () => setTick(t => t + 1);
+    const interval = setInterval(flicker, 28);
+    return () => clearInterval(interval);
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (isMobile) return;
     const positions = new Array(NUM_TRAILS).fill({ x: 0, y: 0 });
     const handleMouseMove = (e) => {
       positions.unshift({ x: e.clientX, y: e.clientY });
@@ -27,10 +35,12 @@ function Cursor() {
     };
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+  }, [isMobile]);
 
   // SVG star path generator (5-pointed star)
   const starPath = "M10 2 L12.35 7.58 L18.22 8.09 L13.91 12.13 L15.54 17.78 L10 14.4 L4.46 17.78 L6.09 12.13 L1.78 8.09 L7.65 7.58 Z";
+
+  if (isMobile) return null; // Block animation on mobile
 
   return (
     <>
@@ -41,7 +51,6 @@ function Cursor() {
         let fill = "url(#watercolorGradientFront)";
         if (progress > 0.62) fill = "url(#watercolorGradientBack)";
 
-        // Each trail uses an SVG star
         return (
           <span
             key={i}

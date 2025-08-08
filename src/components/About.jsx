@@ -61,7 +61,7 @@ const About = () => {
             </div> */}
 
             <a
-              href="img/cv.pdf"
+              href="https://drive.google.com/file/d/1SFUOeGeYBAZRk7jKenXyaLoAcQBSFbiC/view?usp=drivesdk"
               className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full transition-all duration-300 shadow-lg shadow-blue-600/20"
             >
               <FaDownload /> Download CV
