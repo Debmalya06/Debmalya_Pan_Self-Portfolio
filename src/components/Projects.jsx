@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Loader from "./Loader";
 import {
   FaGithub,
@@ -13,9 +13,10 @@ import {
   FaDatabase,
   FaReact  ,
 } from "react-icons/fa";
-import { SiSpring, SiMysql, SiBootstrap, SiTailwindcss, SiArduino, SiCplusplus,SiPython,SiSpringboot, SiReact, SiMongodb,SiFastapi  } from "react-icons/si";
+import { SiSpring, SiMysql, SiBootstrap, SiTailwindcss, SiArduino, SiCplusplus,SiPython,SiSpringboot, SiReact, SiMongodb,SiFastapi,SiGooglechrome , SiJavascript } from "react-icons/si";
+import { MdStorage as logo } from "react-icons/md";
 import { FcWiFiLogo } from "react-icons/fc";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ExternalLink } from "lucide-react";
 
 const Projects = () => {
@@ -65,7 +66,7 @@ const Projects = () => {
       title: "AI-Powered-Email-Reply-Generator",
       description:
         "Designed to automate email responses using artificial intelligence. It integrates with Gmail to read incoming emails and generate contextually appropriate replies, streamlining email management and enhancing productivity.",
-      image: "/img/em.png?height=300&width=500",
+      image: "/img/EmailReply.png?height=300&width=500",
       category: "web",
       github: "https://github.com/Debmalya06/AI-Powered-Email-Reply-Generator",
       demo: "https://ai-powered-email-reply-generator-1.onrender.com/",
@@ -107,23 +108,26 @@ const Projects = () => {
     },
     {
         id: 4,
-        title: "Devm Todo",
+        title: "MediVault",
         description:
-          "Devm Todo is a task management system built with Spring Boot & Thymeleaf that integrates Google's Gemini API to enhance task input with natural language processing (NLP). Users can add tasks in casual language, and the AI will correct and structure the input before saving it to the database..",
-        image: "/img/todo2.png?height=300&width=500",
+          "A comprehensive medical management platform designed to streamline healthcare processes for patients, doctors, and administrators. MediVault offers appointment booking, medical record management, AI-powered assistance, and more—all in a secure, user-friendly environment.",
+        image: "/img/MediVault.png?height=300&width=500",
         category: "web",
-        github: "https://github.com/debmalya06/Devm-ToDo",
-        demo: "#",
+        github: "https://github.com/Debmalya06/MediVault",
+        demo: "https://medivault-0drq.onrender.com/",
         technologies: [
-          { name: "Spring Boot", icon: <SiSpringboot  className="text-green-600" /> },
+          { name: "Java", icon: <FaJava className="text-blue-500" /> },
+          { name: "Spring Boot", icon: <SiSpringboot className="text-green-600" /> },
           { name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
-          { name: "Tailwind CSS", icon: <SiTailwindcss className="text-cyan-400" /> }, 
-          { name: "MySQL", icon: <SiMysql className="text-blue-600" /> },
+          { name: "CSS", icon: <FaCss3Alt className="text-blue-500" /> }, 
+          { name: "JavaScript", icon: <FaJs className="text-yellow-400" /> },
+          { name: "Python", icon: <SiPython className="text-blue-400" /> },
         ],
         features: [
-          "Task Management: Add, edit, delete, and mark tasks as completed.",
-          " Email Notifications: Get notified about pending tasks.",
-          "User Authentication: Secure login/logout functionality."
+          "User Authentication: Secure login and registration for patients and admins",
+          "Appointment Booking: Book, view, and manage appointments with doctors by specialization and availability",
+          "Medical Reports: Upload, view, and analyze medical reports",
+          "AI Assistance: Get instant medical insights and suggestions powered by AI"
         ],
       },
       {
@@ -152,27 +156,30 @@ const Projects = () => {
       },
        {
       id: 6,
-      title: "Hospital Management System",
+      title: "Research Sathi",
       description:
-        "A comprehensive hospital management system with role-based access control for doctors, administrators, and patients using Java, JSP, and MySQL.",
-      image: "/img/hospital.png?height=300&width=500",
+        "Research Sathi is a Chrome extension that enables users to highlight any text on a webpage and instantly generate a summary. It also allows users to save notes locally for future reference, making it a handy tool for efficient research and content curation directly within the browser.",
+      image: "/img/Research.png?height=300&width=500",
       category: "web",
-      github: "https://github.com/debmalya06/DevLifeCare-Hospital ",
+      github: "https://github.com/Debmalya06/Research-Sathi",
       demo: "#",
-      technologies: [
-        { name: "Java", icon: <FaJava className="text-blue-500" /> },
-        { name: "JSP", icon: <FaJava className="text-red-500" /> },
-        { name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
-        { name: "CSS", icon: <FaCss3Alt className="text-blue-500" /> },
-        { name: "Bootstrap", icon: <SiBootstrap className="text-purple-500" /> },
-        { name: "MySQL", icon: <SiMysql className="text-blue-600" /> },
-      ],
-      features: [
-        "Role-based access control for doctors, administrators, and patients",
-        "MySQL database architecture for patient records and appointments",
-        "Secure authentication and authorization using JSP",
-        "CRUD operations for managing patients, appointments, and doctor details",
-      ],
+    technologies: [
+  { name: "Java", icon: <FaJava className="text-blue-500" /> },
+  { name: "Spring Boot", icon: <SiSpring className="text-green-600" /> },
+  { name: "JavaScript", icon: <SiJavascript className="text-yellow-500" /> },
+  { name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
+  { name: "CSS", icon: <FaCss3Alt className="text-blue-500" /> },
+  // { name: "Chrome Extension", icon: <SiGooglechrome className="text-gray-600" /> },
+  // { name: "LocalStorage", icon: <MdStorage className="text-green-600" /> },
+],
+
+     features: [
+  "Text Highlight & Summarization: Instantly summarize selected text from any webpage.",
+  "Local Note Saving: Save research notes directly in the browser with no cloud dependency.",
+  "Distraction-Free Workflow: Enables focused research without switching tabs or tools.",
+  "Lightweight & Fast: Minimalistic interface ensures smooth performance during browsing.",
+],
+
     },
        
   ];

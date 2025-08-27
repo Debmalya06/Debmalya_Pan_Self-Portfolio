@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { Github, ExternalLink, ArrowLeft, Search } from "lucide-react"
 import { allProjects } from "../data/projects"
@@ -10,6 +10,12 @@ const categories = ["All", "Web Development", "AI/ML", "IoT", "Mobile"]
 const ProjectsPage = () => {
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("All")
+  const [visibleProjects, setVisibleProjects] = useState(3) // Start with 3 projects
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
 const filteredProjects =
   selectedCategory === "All"
@@ -22,6 +28,19 @@ const filteredProjects =
           : project.category === selectedCategory) &&
         project.title.toLowerCase().includes(searchTerm.toLowerCase())
       );
+
+  // Get projects to display based on visibleProjects count
+  const displayedProjects = filteredProjects.slice(0, visibleProjects);
+
+  // Handle load more functionality
+  const handleLoadMore = () => {
+    setVisibleProjects(prev => prev + 3);
+  };
+
+  // Reset visible projects when search or category changes
+  useEffect(() => {
+    setVisibleProjects(3);
+  }, [searchTerm, selectedCategory]);
 
   return (
     <div className="min-h-screen bg-slate-900 text-white">
@@ -87,7 +106,7 @@ const filteredProjects =
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project) => (
+          {displayedProjects.map((project) => (
             <div
               key={project.id}
               className="bg-slate-800 border border-slate-700 rounded-lg hover:border-blue-500 transition-all duration-300 hover:transform hover:scale-105"
@@ -142,14 +161,24 @@ const filteredProjects =
                   </div>
 
                   <div className="flex gap-2 pt-2">
-                    <button className="flex-1 flex items-center justify-center gap-2 px-3 py-2 border border-slate-600 rounded text-sm hover:border-blue-500 transition-colors">
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center gap-2 px-3 py-2 border border-slate-600 rounded text-sm hover:border-blue-500 transition-colors"
+                    >
                       <Github className="w-4 h-4" />
                       Code
-                    </button>
-                    <button className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-blue-600 hover:bg-blue-700 rounded text-sm transition-colors">
+                    </a>
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-blue-600 hover:bg-blue-700 rounded text-sm transition-colors"
+                    >
                       <ExternalLink className="w-4 h-4" />
                       Live Demo
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -165,10 +194,13 @@ const filteredProjects =
         )}
 
         {/* Load More Button */}
-        {filteredProjects.length > 0 && (
+        {filteredProjects.length > visibleProjects && (
           <div className="text-center mt-12">
-            <button className="border border-slate-600 hover:border-blue-500 px-8 py-3 rounded-lg text-lg transition-colors">
-              Load More Projects
+            <button 
+              onClick={handleLoadMore}
+              className="border border-slate-600 hover:border-blue-500 px-8 py-3 rounded-lg text-lg transition-colors"
+            >
+              Load More Projects ({filteredProjects.length - visibleProjects} remaining)
             </button>
           </div>
         )}
