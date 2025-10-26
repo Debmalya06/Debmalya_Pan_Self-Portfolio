@@ -45,7 +45,7 @@ const MyHero = () => {
             <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-blue-500 shadow-lg shadow-blue-500/30">
               <img
                 src="../img/debmalya.jpg?height=160&width=160"
-                alt="profile"
+                alt="Debmalya Pan - Java Full Stack Developer Profile Picture"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -64,8 +64,8 @@ const MyHero = () => {
           </h2>
 
           <p className="max-w-2xl text-gray-300 mb-8 text-lg">
-            Dynamic and motivated software developer with expertise in Java and backend technologies, complemented by
-            strong problem-solving skills and a passion for creating innovative solutions.
+            <strong>Dynamic and motivated software developer</strong> with expertise in <strong>Java</strong> and backend technologies, complemented by
+            strong problem-solving skills and a passion for creating innovative solutions. Specializing in <strong>Spring Boot</strong>, <strong>React</strong>, <strong>IoT development</strong>, and <strong>full-stack web applications</strong>.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mb-12">

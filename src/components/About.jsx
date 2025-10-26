@@ -16,18 +16,18 @@ const About = () => {
           <div className="order-2 md:order-1 m-2">
             <h3 className="text-2xl font-bold mb-4 text-blue-400">Who am I?</h3>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              I'm a passionate Java Full Stack Developer with expertise in building robust web applications. My journey
+              I'm <strong>Debmalya Pan</strong>, a passionate <strong>Java Full Stack Developer</strong> with expertise in building robust web applications. My journey
               in software development started with a strong foundation in Java and has expanded to include various
               technologies in both frontend and backend development.
             </p>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              I specialize in developing scalable applications using Spring Boot, Hibernate, and other Java frameworks.
-              I'm also proficient in frontend technologies like HTML, CSS, JavaScript, and have experience with IoT
-              projects.
+              I specialize in developing scalable applications using <strong>Spring Boot</strong>, <strong>Hibernate</strong>, and other Java frameworks.
+              I'm also proficient in frontend technologies like <strong>HTML</strong>, <strong>CSS</strong>, <strong>JavaScript</strong>, <strong>React</strong>, and have experience with <strong>IoT
+              projects</strong>.
             </p>
             <p className="text-gray-300 mb-8 leading-relaxed">
               My goal is to create innovative solutions that solve real-world problems while continuously learning and
-              adapting to new technologies and methodologies.
+              adapting to new technologies and methodologies. I have successfully delivered projects in <strong>healthcare</strong>, <strong>IoT safety systems</strong>, and <strong>AI-powered applications</strong>.
             </p>
 
             {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
