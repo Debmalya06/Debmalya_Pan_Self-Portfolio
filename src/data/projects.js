@@ -2,6 +2,28 @@
 export const allProjects = [
   {
     id: 1,
+    title: "SmartRide - Ride Sharing Platform",
+    description:
+      "A comprehensive ride-sharing and carpooling platform that connects drivers and passengers for efficient urban transportation. Built with Spring Boot and React, featuring JWT authentication, real-time booking management, and professional email notifications.",
+    image: "/img/smartride.png?height=200&width=400",
+    technologies: ["Spring Boot", "React", "Tailwind CSS", "MySQL", "JWT", "Vite", "JavaMail API", "Twilio API"],
+    category: ["Web Development", "Full Stack"],
+    features: [
+      "JWT-based authentication with role-based access control (Driver/Passenger/Admin)",
+      "Advanced ride search with filters for date, location, price, and available seats",
+      "Real-time booking system with seat selection and status tracking",
+      "Professional email notification system with HTML templates",
+      "Admin panel for user management and driver verification",
+      "OTP verification via SMS for enhanced security",
+      "Responsive design with modern UI/UX principles",
+    ],
+    githubUrl: "https://github.com/Debmalya06/Ride-Sharing-App",
+    liveUrl: "https://ride-sharing-app-ncr5.onrender.com",
+    videoUrl: "https://youtu.be/JwouJJDIxSw",
+    status: "Completed",
+  },
+  {
+    id: 2,
     title: "Little Guardian",
     description:
       "Little Guardian is a web application that's integrated with IoT and ML to provide safety and baby care.",
@@ -19,7 +41,7 @@ export const allProjects = [
     status: "Completed",
   },
   {
-    id: 2,
+    id: 3,
     title: "AI-Powered-Email-Reply-Generator",
     description:
       "Designed to automate email responses using artificial intelligence. Integrates with Gmail to read incoming emails and generate contextually appropriate replies, streamlining email management and enhancing productivity.",
@@ -36,7 +58,7 @@ export const allProjects = [
     status: "Completed",
   },
   {
-    id: 3,
+    id: 4,
     title: "Room Chat",
     description:
       "Room chat is a room based chat application where multiple users can join a room and chat with each other.",
@@ -53,7 +75,7 @@ export const allProjects = [
     status: "Completed",
   },
   {
-    id: 4,
+    id: 5,
     title: "MediVault",
     description:
       "A comprehensive medical management platform designed to streamline healthcare processes for patients, doctors, and administrators. MediVault offers appointment booking, medical record management, AI-powered assistance, and more—all in a secure, user-friendly environment.",
@@ -71,7 +93,7 @@ export const allProjects = [
     status: "Completed",
   },
   {
-    id: 5,
+    id: 6,
     title: "Devm Todo",
     description:
       "Devm Todo is a task management system built with Spring Boot & Thymeleaf that integrates Google's Gemini API to enhance task input with natural language processing (NLP). Users can add tasks in casual language, and the AI will correct and structure the input before saving it to the database.",
@@ -88,7 +110,7 @@ export const allProjects = [
     status: "Completed",
   },
   {
-    id: 6,
+    id: 7,
     title: "AI-based LPG Gas Leakage Detection and Fire Alert System",
     description:
       "The AI-based LPG Gas Leakage Detection and Fire Alert System is an innovative solution designed to enhance home safety by detecting LPG gas leaks and potential fire hazards.",
@@ -106,7 +128,7 @@ export const allProjects = [
     status: "Completed",
   },
   {
-    id: 7,
+    id: 8,
     title: "Research Sathi",
     description:
       "Research Sathi is a Chrome extension that enables users to highlight any text on a webpage and instantly generate a summary. It also allows users to save notes locally for future reference, making it a handy tool for efficient research and content curation directly within the browser.",
@@ -124,7 +146,7 @@ export const allProjects = [
     status: "Completed",
   },
   {
-    id: 8,
+    id: 9,
     title: "Hospital Management System",
     description:
       "A comprehensive hospital management system with role-based access control for doctors, administrators and patients using Java, JSP, and MySQL.",
@@ -142,7 +164,7 @@ export const allProjects = [
     status: "Completed",
   },
   {
-    id: 9,
+    id: 10,
     title: "Educare",
     description:
       "An educational learning platform providing access to courses, internships, and training opportunities for students using Spring Boot.",
@@ -160,7 +182,7 @@ export const allProjects = [
     status: "In Progress",
   },
   {
-    id: 10,
+    id: 11,
     title: "Dev-Hotel-Management",
     description:
       "A comprehensive hotel management system with user and employee authentication, secure registration, and database management using Spring Framework.",
@@ -178,7 +200,7 @@ export const allProjects = [
     status: "Completed",
   },
   {
-    id: 11,
+    id: 12,
     title: "Netflix Clone",
     description:
       "A responsive front-end clone of the Netflix landing page built using HTML, CSS, and JavaScript. Designed to mimic the visual aesthetics and user interface of Netflix, this project helps reinforce front-end development skills like layout design, animations, and DOM manipulation.",
@@ -198,7 +220,7 @@ export const allProjects = [
     status: "Completed",
   },
   {
-    id: 12,
+    id: 13,
     title: "PlantTribe",
     description:
       "Digital Companion for Indian Farmers and Gardeners. A comprehensive platform that combines traditional farming with modern AI technology to provide plant analysis, disease detection, growth tracking, and community features for better farming results.",

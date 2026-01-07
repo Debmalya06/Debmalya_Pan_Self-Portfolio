@@ -13,7 +13,7 @@ import {
   FaDatabase,
   FaReact  ,
 } from "react-icons/fa";
-import { SiSpring, SiMysql, SiBootstrap, SiTailwindcss, SiArduino, SiCplusplus,SiPython,SiSpringboot, SiReact, SiMongodb,SiFastapi,SiGooglechrome , SiJavascript } from "react-icons/si";
+import { SiSpring, SiMysql, SiBootstrap, SiTailwindcss, SiArduino, SiCplusplus,SiPython,SiSpringboot, SiReact, SiMongodb,SiFastapi,SiGooglechrome , SiJavascript, SiDocker, SiGithubactions } from "react-icons/si";
 import { MdStorage as logo } from "react-icons/md";
 import { FcWiFiLogo } from "react-icons/fc";
 import { Link } from "react-router-dom";
@@ -34,7 +34,35 @@ const Projects = () => {
 
   const projects = [
     {
-        id: 1,
+      id: 1,
+      title: "SmartRide - Ride Sharing Platform",
+      description:
+        "A comprehensive ride-sharing and carpooling platform that connects drivers and passengers for efficient urban transportation. Built with Spring Boot and React, featuring JWT authentication, real-time booking management, and professional email notifications.",
+      image: "/img/smartride.png?height=300&width=500",
+      category: "web",
+      github: "https://github.com/Debmalya06/Ride-Sharing-App",
+      demo: "https://ride-sharing-app-ncr5.onrender.com",
+      videoUrl: "https://youtu.be/JwouJJDIxSw",
+      technologies: [
+        { name: "Spring Boot", icon: <SiSpringboot className="text-green-500" /> },
+        { name: "React", icon: <SiReact className="text-blue-500" /> },
+        { name: "Tailwind", icon: <SiTailwindcss className="text-blue-500" /> },
+        { name: "MySQL", icon: <SiMysql className="text-blue-500" /> },
+        { name: "JavaScript", icon: <SiJavascript className="text-yellow-400" /> },
+        { name: "Docker", icon: <SiDocker className="text-blue-400" /> },
+        { name: "GitHub Actions", icon: <SiGithubactions className="text-gray-600" /> },
+      ],
+      features: [
+        "JWT-based authentication with role-based access control (Driver/Passenger/Admin)",
+        "Advanced ride search with filters for date, location, price, and available seats",
+        "Real-time booking system with seat selection and status tracking",
+        "Professional email notification system with HTML templates",
+        "Admin panel for user management and driver verification",
+        "OTP verification via SMS for enhanced security",
+      ],
+    },
+    {
+        id: 2,
         title: "Little Guardian",
         description:
           "Little Guardian is a web application that's integrated with IoT and ML to provide safety and baby care.",
@@ -62,7 +90,7 @@ const Projects = () => {
         ],
       },
     {
-      id: 2,
+      id: 3,
       title: "AI-Powered-Email-Reply-Generator",
       description:
         "Designed to automate email responses using artificial intelligence. It integrates with Gmail to read incoming emails and generate contextually appropriate replies, streamlining email management and enhancing productivity.",
@@ -85,7 +113,7 @@ const Projects = () => {
    
  
 {
-      id: 3,
+      id: 4,
       title: "Room Chat",
       description:
         "Room chat is a room based chat application where multiple users can join a room and chat with each other.",
@@ -107,7 +135,7 @@ const Projects = () => {
       ],
     },
     {
-        id: 4,
+        id: 5,
         title: "MediVault",
         description:
           "A comprehensive medical management platform designed to streamline healthcare processes for patients, doctors, and administrators. MediVault offers appointment booking, medical record management, AI-powered assistance, and more—all in a secure, user-friendly environment.",
@@ -131,7 +159,7 @@ const Projects = () => {
         ],
       },
       {
-        id: 5,
+        id: 6,
         title: "AI-based LPG Gas Leakage Detection and Fire Alert System",
         description:
           "The AI-based LPG Gas Leakage Detection and Fire Alert System is an innovative solution designed to enhance home safety by detecting LPG gas leaks and potential fire hazards. ",
@@ -154,33 +182,33 @@ const Projects = () => {
 "Comprehensive Safety: Ensures comprehensive home safety.",
         ],
       },
-       {
-      id: 6,
-      title: "Research Sathi",
-      description:
-        "Research Sathi is a Chrome extension that enables users to highlight any text on a webpage and instantly generate a summary. It also allows users to save notes locally for future reference, making it a handy tool for efficient research and content curation directly within the browser.",
-      image: "/img/Research.png?height=300&width=500",
-      category: "web",
-      github: "https://github.com/Debmalya06/Research-Sathi",
-      demo: "#",
-    technologies: [
-  { name: "Java", icon: <FaJava className="text-blue-500" /> },
-  { name: "Spring Boot", icon: <SiSpring className="text-green-600" /> },
-  { name: "JavaScript", icon: <SiJavascript className="text-yellow-500" /> },
-  { name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
-  { name: "CSS", icon: <FaCss3Alt className="text-blue-500" /> },
-  // { name: "Chrome Extension", icon: <SiGooglechrome className="text-gray-600" /> },
-  // { name: "LocalStorage", icon: <MdStorage className="text-green-600" /> },
-],
+//        {
+//       id: 6,
+//       title: "Research Sathi",
+//       description:
+//         "Research Sathi is a Chrome extension that enables users to highlight any text on a webpage and instantly generate a summary. It also allows users to save notes locally for future reference, making it a handy tool for efficient research and content curation directly within the browser.",
+//       image: "/img/Research.png?height=300&width=500",
+//       category: "web",
+//       github: "https://github.com/Debmalya06/Research-Sathi",
+//       demo: "#",
+//     technologies: [
+//   { name: "Java", icon: <FaJava className="text-blue-500" /> },
+//   { name: "Spring Boot", icon: <SiSpring className="text-green-600" /> },
+//   { name: "JavaScript", icon: <SiJavascript className="text-yellow-500" /> },
+//   { name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
+//   { name: "CSS", icon: <FaCss3Alt className="text-blue-500" /> },
+//   // { name: "Chrome Extension", icon: <SiGooglechrome className="text-gray-600" /> },
+//   // { name: "LocalStorage", icon: <MdStorage className="text-green-600" /> },
+// ],
 
-     features: [
-  "Text Highlight & Summarization: Instantly summarize selected text from any webpage.",
-  "Local Note Saving: Save research notes directly in the browser with no cloud dependency.",
-  "Distraction-Free Workflow: Enables focused research without switching tabs or tools.",
-  "Lightweight & Fast: Minimalistic interface ensures smooth performance during browsing.",
-],
+//      features: [
+//   "Text Highlight & Summarization: Instantly summarize selected text from any webpage.",
+//   "Local Note Saving: Save research notes directly in the browser with no cloud dependency.",
+//   "Distraction-Free Workflow: Enables focused research without switching tabs or tools.",
+//   "Lightweight & Fast: Minimalistic interface ensures smooth performance during browsing.",
+// ],
 
-    },
+//     },
        
   ];
 
