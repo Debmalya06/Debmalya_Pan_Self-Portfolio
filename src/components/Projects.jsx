@@ -117,7 +117,7 @@ const Projects = () => {
       title: "Room Chat",
       description:
         "Room chat is a room based chat application where multiple users can join a room and chat with each other.",
-      image: "/img/chat.png?height=300&width=500",
+      image: "/img/chatimp.png?height=300&width=500",
       category: "web",
       github: "https://github.com/Debmalya06/Chat-App",
       demo: "https://chat-app-38ks.onrender.com",
