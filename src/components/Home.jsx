@@ -1,6 +1,7 @@
 import Hero from "./MyHero";
 import About from "./About";
 import MySkill from "./MySkill";
+import CodingActivity from "./CodingActivity";
 import Projects from "./Projects";
 import Education from "./Education";
 import Experience from "./Experience";
@@ -14,6 +15,7 @@ const Home = () => (
     <Hero />
     <About />
     <MySkill />
+    {/* <CodingActivity /> */}
     <Projects />
     <Education />
     <Experience />
