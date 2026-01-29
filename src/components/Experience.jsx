@@ -3,6 +3,14 @@ import { FaBriefcase, FaCalendarAlt, FaCertificate } from "react-icons/fa"
 const Experience = () => {
   const experienceData = [
     {
+      position: "Java Full Stack Developer Intern",
+      company: "Infosys Springboard (Remote)",
+      period: "Sep 2025 - Nov 2025",
+      description:
+        "Developed backend modules for a Java-based ride-sharing system, including JWT-based authentication, ride booking, and fare calculation using Spring Boot and REST APIs. Contributed to user management, booking workflows, and admin monitoring features.",
+      icon: <FaBriefcase size={24} className="text-blue-500" />,
+    },
+    {
       position: "Full Stack Developer Intern",
       company: "Educare Intern Technology",
       period: "Dec 2024 - April 2025",
