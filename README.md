@@ -1,6 +1,6 @@
 # Portfolio Website
 
-A modern, responsive portfolio built with React and Vite showcasing projects, skills, experience, education, and certifications.
+A modern, responsive portfolio built with React showcasing projects, skills, experience, education, and certifications.
 
 ## Overview
 
